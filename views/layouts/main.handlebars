@@ -4,6 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
   <title>Just Tech News</title>
  
 </head>
@@ -11,22 +18,45 @@
 <body>
   <div class="wrapper">
     <header>
-      <h1>
-        <a href="/">Tech Blog</a>
-      </h1>
-      <nav>
-        <a href="/login">Login</a>
-        <a href="/signup">Sign Up</a>
-        <button id="logout" class="btn-no-style">logout</button>
-      </nav>
+      <!--navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+           <div class="navbar-header">
+              <a class="navbar-brand" href="#">Tech Blog</a>
+           </div>
+         <ul class="nav navbar-nav navbar-right">
+           
+           <li><a href="/" class="p-2">Homepage</a></li>
+           <li><a href="/dashboard" class="p-2">Dashboard</a></li>
+           <li>
+             {{#if loggedIn}}
+                 <a href="/logout" id="logout" class="p-2">Logout</a>
+             {{else}}
+                 <a href="/login" class="p-2">Login</a>
+             {{/if}}
+            </li>
+         </ul>
+       </div>
+     </nav>
+      
+      
     </header>
+    <!-- main body -->
     <main>
       {{{ body }}}
     </main>
-    <footer>
-      Thanks for visiting!
+    <!-- footer text-->
+    <footer class="container-fluid text-center">
+       <a href="#myPage" title="To Top">
+         <span class="glyphicon glyphicon-chevron-up"></span>
+       </a>
+       <p>Website Made By Aaditi Pai</p>
     </footer>
   </div>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src="/javascript/logout.js"></script>
 </body>
 

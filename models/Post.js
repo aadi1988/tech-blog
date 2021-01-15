@@ -17,12 +17,9 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false
     },
-    post_url: {
+    post_data: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isURL: true
-      }
+      allowNull: false
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -35,6 +32,7 @@ Post.init(
   {
     sequelize,
     freezeTableName: true,
+    timestamps: true,
     underscored: true,
     modelName: 'post'
   }

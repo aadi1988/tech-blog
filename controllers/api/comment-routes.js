@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const { Comment } = require('../../models');
+const { Comment,Post,User } = require('../../models');
 
+//find all comments
 router.get('/', (req, res) => {
    Comment.findAll({}).then(ans => {
        res.json(ans);
@@ -11,19 +12,49 @@ router.get('/', (req, res) => {
 
 });
 
+//find all comments for a particular post
+router.get('/post/:id',(req, res) => {
+  Comment.findAll({
+    where: {
+        post_id: req.params.id
+    },
+    attributes: ['comment_text'],
+    include: [
+     {
+       model: User,
+       attributes: ['username']
+     }
+   ]
+  }).then(dbPostData => {
+    if (!dbPostData) {
+      res.status(404).json({ message: 'No comment found with this post' });
+      return;
+    }
+    res.json(dbPostData);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+})
+
+
+//Create a comment
 router.post('/', (req, res) => {
-  Comment.create({
-    comment_text: req.body.comment_text,
-    user_id: req.body.user_id,
-    post_id: req.body.post_id
+ if (req.session) {
+    Comment.create({
+      comment_text: req.body.comment_text,
+      post_id: req.body.post_id,
+      user_id: req.session.user_id
   })
   .then(dbCommentData => res.json(dbCommentData))
   .catch(err => {
     console.log(err);
     res.status(400).json(err);
   });
-});
+}});
 
+//delete a comment
 router.delete('/:id', (req, res) => {
     Comment.destroy({
       where: {

@@ -21,7 +21,7 @@ router.get('/:id', (req, res) => {
     include: [
     {
       model: Post,
-      attributes: ['id', 'title', 'post_url', 'created_at']
+      attributes: ['id', 'title', 'post_data', 'created_at']
     },
     // include the Comment model here:
     {
@@ -48,6 +48,7 @@ router.get('/:id', (req, res) => {
 
 // POST /api/users
 router.post('/', (req, res) => {
+   
    User.create({
     username: req.body.username,
     email: req.body.email,
@@ -57,8 +58,9 @@ router.post('/', (req, res) => {
         req.session.user_id = dbUserData.id;
         req.session.username = dbUserData.username;
         req.session.loggedIn = true;
-
+        console.log(dbUserData);
         res.json(dbUserData);
+
     });
   })
     .catch(err => {
@@ -97,6 +99,7 @@ router.post('/login', (req, res) => {
 })
 
 router.post('/logout', (req, res) => {
+   console.log('here');
    if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
