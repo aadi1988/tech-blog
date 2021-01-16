@@ -2,6 +2,7 @@
   [![License](<https://img.shields.io/static/v1?label=License&message=MIT&color=green>)]()
 ## Description
 A project that let's the user post technical articles. Also users can comment on these articles.
+Site link: https://tech-blog-2.herokuapp.com/
 ## Table of contents
 [Installation](#installation-instructions)  
 [License](#license)  
