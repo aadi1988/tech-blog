@@ -19,7 +19,7 @@ This project is covered under MIT license
 ## Contribution
 This is a non-collaborative project
 ## Testing Guidelines
-N/A
+To log in one can use: aadi20@email.com, password: abcd.
 ## Questions
 My Github Profile: [github.com/aadi1988](https://github.com/aadi1988)  
 For more questions, you can reach me @ aaditigp@usc.edu
